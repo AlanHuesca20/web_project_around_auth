@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-import errorMessages from "@utils/errorMessages";
+import errorMessages from "../../utils/errorMessages";
 import Popup from "../Main/components/Popup/Popup";
-import CurrentUserContext from "@contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "../../blocks/login.css";
 
 const Login = ({ handleLogin }) => {
   const [disabled, setDisabled] = useState(true);

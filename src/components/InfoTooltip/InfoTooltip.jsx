@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import CurrentUserContext from "@contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "../../blocks/info.css";
 
 export default function InfoTooltip() {
   const { messagePopup } = useContext(CurrentUserContext);
