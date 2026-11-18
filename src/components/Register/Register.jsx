@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import errorMessages from "../../utils/errorMessages";
 import Popup from "../Main/components/Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
 import "../../blocks/register.css";
 
 const Register = ({ handleRegistration }) => {
@@ -164,7 +165,7 @@ const Register = ({ handleRegistration }) => {
       </form>
       <div className="register__signin">
         <p>¿Ya eres miembro?</p>
-        <Link to="login" className="register__login-link">
+        <Link to="/login" className="register__login-link">
           Inicia sesión aquí
         </Link>
       </div>

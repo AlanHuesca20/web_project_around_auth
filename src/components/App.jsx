@@ -187,6 +187,7 @@ function App() {
       value={{
         currentUser,
         messagePopup,
+        isLoggedIn,
         handleUpdateUser,
         handleUpdateAvatar,
         handleAddPlaceSubmit,
