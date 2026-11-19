@@ -96,6 +96,11 @@ const Login = ({ handleLogin }) => {
     handleLogin(data); // Procesar inicio de sesión
   };
 
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(data);
+  };
+
   return (
     <div className="login">
       <h1 className="login__welcome">Inicia sesión</h1>

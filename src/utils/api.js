@@ -11,6 +11,24 @@ export class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+ async _makeRequest(endPoint, method = "GET", body = null) {
+      const options = {
+        method,
+        headers: { ...this._headers },
+      };
+      if (body) {
+        options.headers["Content-Type"] = "application/json";
+        options.body = JSON.stringify(body);
+      }
+      try {
+        const res = await fetch(`${this._baseUrl}/${endPoint}`, options);
+        if (!res.ok) throw new Error(`Error: ${res.status}`);
+        return await res.json();
+      } catch (err) {
+        return console.log(err);
+      }
+    }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,

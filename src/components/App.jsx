@@ -15,6 +15,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "./InfoTooltip/InfoTooltip";
+import { setToken, getToken } from "../utils/token.js";
 
 function App() {
   const [popup, setPopup] = useState(null);
