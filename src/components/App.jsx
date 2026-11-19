@@ -16,6 +16,8 @@ import Register from "./Register/Register";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "./InfoTooltip/InfoTooltip";
 import { setToken, getToken } from "../utils/token.js";
+import * as auth from "../utils/auth.js";
+import messages from "../utils/messages.js";
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -27,7 +29,7 @@ function App() {
   const [userData, setUserData] = useState({ email: "" });
   const [messagePopup, setMessagePopup] = useState({
     message: "",
-    link: "",
+    link: null,
     linkalt: "",
   });
 
@@ -41,13 +43,13 @@ function App() {
       navigate("/login");
       setMessagePopup({
         message: messages.registerTrue,
-        link: trueImg,
+        link: null,
         linkalt: messages.linkaltTrue,
       });
     } catch (error) {
       setMessagePopup({
         message: messages.registerFalse,
-        link: falseImg,
+        link: null,
         linkalt: messages.linkaltFalse,
       });
       console.error(error);
@@ -67,7 +69,7 @@ function App() {
         setUserData({ email });
         setMessagePopup({
           message: messages.registerTrue,
-          link: trueImg,
+          link: null,
           linkalt: messages.linkaltTrue,
         });
         const redirectPath = location.state?.from?.pathname || "/my-perfil";
@@ -76,7 +78,7 @@ function App() {
     } catch (error) {
       setMessagePopup({
         message: messages.registerFalse,
-        link: falseImg,
+        link: null,
         linkalt: messages.linkaltFalse,
       });
       console.error(error);
@@ -183,12 +185,19 @@ function App() {
     })();
   };
 
+  function handleMessagePopup() {
+    handleOpenPopup({ children: <InfoTooltip /> });
+  }
+
   return (
     <CurrentUserContext.Provider
       value={{
         currentUser,
         messagePopup,
         isLoggedIn,
+        popup,
+        handleMessagePopup,
+        handleClosePopup,
         handleUpdateUser,
         handleUpdateAvatar,
         handleAddPlaceSubmit,

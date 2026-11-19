@@ -55,7 +55,6 @@ const Register = ({ handleRegistration }) => {
     const value = input.value.trim();
     let errorMessage = "";
 
-    // Registrar que el campo fue "tocado"
     setTouchedFields((prev) => ({
       ...prev,
       [input.name]: true,
